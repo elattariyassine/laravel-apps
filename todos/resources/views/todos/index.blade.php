@@ -27,10 +27,11 @@
                                     <form action="{{ route('todos.destroy', ['todo' => $todo->id]) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit">delete</button>
+                                    <button style="background: transparent;
+                                    border: 0;" type="submit"><i style="color: #f44336" class="fa fa-trash-o" aria-hidden="true"></i></button>
                                     </form>
                                 {{-- <a href="{{ route('todos.destroy', ['todo' => $todo->id]) }}" style="color: #f44336">
-										<i class="fa fa-trash-o" aria-hidden="true"></i>
+										
 									</a> --}}
 								</span>
 								<span class="float-right mr-2">
@@ -55,7 +56,10 @@
                                 <p class="text-center"> No todos. </p>
 						@endforelse
 					</ul>
-				</div>
+                </div>
+                <div style="margin: 0 auto;">
+                    {{ $todos->links() }}
+                </div>
 			</div>
 		</div>
 	</div>

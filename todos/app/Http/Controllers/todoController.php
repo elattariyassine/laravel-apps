@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\todosRequest;
 use App\Todo;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class todoController extends Controller
      */
     public function index()
     {
-        $todos = Todo::all();
+        $todos = Todo::paginate(7);
         return view('todos.index', ['todos' => $todos]);
     }
 
@@ -34,9 +35,11 @@ class todoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(todosRequest $request)
     {
-        
+        $todo = Todo::create(['title' => $request->todoTitle, 'description' => $request->todoDescription, 'completed' => false]);
+        $todo->save();
+        return redirect()->route('todos.index');
     }
 
     /**
@@ -68,7 +71,7 @@ class todoController extends Controller
      * @param  \App\Todo  $todo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Todo $todo)
+    public function update(todosRequest $request, Todo $todo)
     {   
         $todo->title = $request->todoTitle;
         $todo->description = $request->todoDescription;
