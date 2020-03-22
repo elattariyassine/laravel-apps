@@ -69,8 +69,11 @@ class todoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Todo $todo)
-    {
-        //
+    {   
+        $todo->title = $request->todoTitle;
+        $todo->description = $request->todoDescription;
+        $todo->save();
+        return redirect()->route('todos.index');
     }
 
     /**
@@ -82,10 +85,12 @@ class todoController extends Controller
     public function destroy(Todo $todo)
     {
         Todo::destroy($todo->id);
-        return view('todo.index');
+        return redirect()->route('todos.index');
     }
 
     public function completed(Todo $todo){
-        
+        $todo->completed = true;
+        $todo->save();
+        return redirect()->route('todos.index');
     }
 }

@@ -18,11 +18,20 @@
 					<ul class="list-group">
 						@forelse ($todos as $todo)
 							<li class="list-group-item text-muted">
-								{{ $todo->title }}
+                                @if ($todo->completed)
+                                  <del>{{ $todo->title }}</del>  
+                                @else
+                                  {{ $todo->title }}
+                                @endif
 								<span class="float-right">
-                                <a href="{{ route('todos.destroy', ['todo' => $todo->id]) }}" style="color: #f44336">
+                                    <form action="{{ route('todos.destroy', ['todo' => $todo->id]) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit">delete</button>
+                                    </form>
+                                {{-- <a href="{{ route('todos.destroy', ['todo' => $todo->id]) }}" style="color: #f44336">
 										<i class="fa fa-trash-o" aria-hidden="true"></i>
-									</a>
+									</a> --}}
 								</span>
 								<span class="float-right mr-2">
                                     <a href="{{ route('todos.edit', ['todo' => $todo->id]) }}" style="color: #4caf50">
