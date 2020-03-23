@@ -13,8 +13,8 @@
     @endif
     <div class="card card-default">
         <div class="card-header">All categories</div>
-        <div class="card-body">
-            <table class="table">
+        <div class="card-body" style="text-align: center;padding:0;">
+            <table class="table table-striped">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
@@ -28,8 +28,13 @@
                         <th scope="row">{{ $loop->index + 1 }}</th>
                         <td>{{$category->name}}</td>
                         <td>
-                            <button class="btn btn-primary">Edit</button>
-                            <button class="btn btn-danger">Delete</button>
+                            <a href="{{ route('categories.edit', ['category' => $category->id]) }}" 
+                               class="btn btn-primary">Edit</a>
+                            <form method="post" style="display: inline;" action="{{ route('categories.destroy', ['category' => $category->id]) }}">
+                                @csrf
+                                @method('delete')
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
                         </td>
                     </tr>
                     @empty
