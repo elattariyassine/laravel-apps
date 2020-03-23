@@ -77,10 +77,10 @@
                 <div class="col-md-4 py-4">
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <a href="/posts">Posts</a>
+                            <a href="{{ route('posts.index') }}">Posts</a>
                         </li>
                         <li class="list-group-item">
-                            <a href="/categories">Categories</a>
+                            <a href="{{ route('categories.index') }}">Categories</a>
                         </li>
                     </ul>
                 </div>
