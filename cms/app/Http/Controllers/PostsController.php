@@ -88,6 +88,13 @@ class PostsController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        session()->flash('success', 'Post trashed successfuly');
+        return redirect()->route('posts.index');
+    }
+    
+    public function trashed(){
+        $trashed = Post::onlyTrashed()->get();
+        return view('posts.index')->with('posts', $trashed);
     }
 }
