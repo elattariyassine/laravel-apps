@@ -33,9 +33,12 @@
                         </td>
                         <td style="vertical-align: middle;">{{$post->title}}</td>
                         <td style="vertical-align: middle;">
-                            @if ($post->trashed() == null)
+                            @if (!$post->trashed())
                             <a href="{{ route('posts.edit', ['post' => $post->id]) }}" 
                                class="btn btn-primary">Edit</a>
+                            @else
+                            <a href="{{ route('trashed.restore', ['id' => $post->id]) }}" 
+                                class="btn btn-primary">Restore</a>
                             @endif
                             <form method="post" style="display: inline;" action="{{ route('posts.destroy', ['post' => $post->id]) }}">
                                 @csrf

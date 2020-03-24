@@ -21,5 +21,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/trashed-posts', 'PostsController@trashed')->name('trashed.index');
+Route::get('/trashed-posts/{id}', 'PostsController@restore')->name('trashed.restore');
 Route::resource('/categories', 'CategoriesController');
 Route::resource('/posts', 'PostsController');
