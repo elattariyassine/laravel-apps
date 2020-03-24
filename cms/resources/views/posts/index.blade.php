@@ -12,7 +12,7 @@
         </div>
     @endif
     <div class="card card-default">
-        <div class="card-header">{{ $action ? 'All Posts' : 'Trashed Posts' }}</div>
+        <div class="card-header">{{ isset($action) ? 'All Posts' : 'Trashed Posts' }}</div>
         <div class="card-body" style="text-align: center;padding:0;">
             @if (count($posts) != 0)
             <table class="table table-striped">
