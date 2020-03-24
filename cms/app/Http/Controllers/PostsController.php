@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PostRequest;
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 class PostsController extends Controller
 {
@@ -15,7 +17,11 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return view('posts.index')->with('posts', Post::all());
+        $action = false;
+        if (Route::currentRouteName() == 'posts.index') {
+            $action = true;
+        } 
+        return view('posts.index', ['posts' => Post::all(), 'action' => $action]);
     }
 
     /**
@@ -86,15 +92,31 @@ class PostsController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy($id)
     {
-        $post->delete();
-        session()->flash('success', 'Post trashed successfuly');
-        return redirect()->route('posts.index');
+        $post = Post::withTrashed()->where('id', $id)->first();
+        if ($post->trashed()) {
+            //permanetly deleting post from DB
+            Storage::disk('public')->delete($post->image);
+            $post->forceDelete();
+            //delete image from folder
+            $trashed = Post::onlyTrashed()->get();
+            session()->flash('success', 'Post deleted successfuly');
+            return view('posts.index')->withPosts($trashed);
+
+        } else {
+            session()->flash('success', 'Post trashed successfuly');
+            $post->delete();
+            return redirect()->route('posts.index');
+        }
     }
     
     public function trashed(){
+        $action = false;
+        if (Route::currentRouteName() == 'posts.index') {
+            $action = true;
+        } 
         $trashed = Post::onlyTrashed()->get();
-        return view('posts.index')->with('posts', $trashed);
+        return view('posts.index', ['posts' => $trashed, 'action' => $action]);
     }
 }

@@ -12,7 +12,7 @@
         </div>
     @endif
     <div class="card card-default">
-        <div class="card-header">All Posts</div>
+        <div class="card-header">{{ $action ? 'All Posts' : 'Trashed Posts' }}</div>
         <div class="card-body" style="text-align: center;padding:0;">
             @if (count($posts) != 0)
             <table class="table table-striped">
@@ -33,12 +33,16 @@
                         </td>
                         <td style="vertical-align: middle;">{{$post->title}}</td>
                         <td style="vertical-align: middle;">
+                            @if ($post->trashed() == null)
                             <a href="{{ route('posts.edit', ['post' => $post->id]) }}" 
                                class="btn btn-primary">Edit</a>
+                            @endif
                             <form method="post" style="display: inline;" action="{{ route('posts.destroy', ['post' => $post->id]) }}">
                                 @csrf
                                 @method('delete')
-                                <button type="submit" class="btn btn-danger">Delete</button>
+                                <button type="submit" class="btn btn-danger">
+                                    {{ $post->trashed() ? 'Delete': 'Trashed' }}
+                                </button>
                             </form>
                         </td>
                     </tr>
@@ -46,7 +50,7 @@
                 </tbody>
               </table>
             @else
-            Not posts yet
+            <h1 class="text-center">No post yet.</h1>
             @endif
             
         </div>
