@@ -7,7 +7,7 @@
 @section('content')
     <div class="card card-default">
         <div class="card-header">
-            {{-- {{ isset($post) ? "Update Post" : "Add a new Post" }} --}}
+            {{ isset($post) ? "Update Post" : "Add a new Post" }}
         </div>
         <div class="card-body">
         <form action="{{ isset($post) ? route('posts.update', ['post' => $post->id]) : route('posts.store')  }}" method="POST" enctype="multipart/form-data">
@@ -61,6 +61,18 @@
                            class="form-control @error('image') is-invalid @enderror">
                 </div>
                 @error('image')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+                <div class="form-group">
+                    <label for="selectCategory">Select a category</label>
+                    <select class="form-control @error('cat') is-invalid @enderror" id="selectCategory" name="categoryID">
+                        {{-- <option disabled selected>Choose a category</option> --}}
+                        @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                @error('cat')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror                
                 <div class="form-group">

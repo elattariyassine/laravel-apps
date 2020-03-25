@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Http\Requests\PostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Post;
@@ -32,7 +33,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('posts.create');
+        return view('posts.create')->withCategories(Category::all());
     }
 
     /**
@@ -47,6 +48,7 @@ class PostsController extends Controller
             'title' => $request->title,
             'description' => $request->description,
             'content' => $request->content,
+            'category_id' => $request->categoryID,
             'image' => $request->image->store('images', 'public')
         ]);
         session()->flash('success', 'Post created successfuly');
