@@ -12,6 +12,12 @@ use Illuminate\Support\Facades\Storage;
 
 class PostsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('checkCategory')->only('create');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -74,7 +80,7 @@ class PostsController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('posts.create')->with('post', $post);
+        return view('posts.create', ['post' => $post, 'categories' => Category::all()]);
     }
 
     /**
