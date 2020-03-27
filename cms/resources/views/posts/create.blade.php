@@ -32,8 +32,7 @@
                     <textarea type="text" 
                               name="description" 
                               class="form-control @error('description') is-invalid @enderror" 
-                              placeholder="Description">{{ isset($post) ? $post->description : '' }}
-                    </textarea>
+                              placeholder="Description">{{ isset($post) ? $post->description : '' }}</textarea>
                 </div>
                 @error('description')
                     <div class="alert alert-danger">{{ $message }}</div>
@@ -55,11 +54,24 @@
                     <img src="{{ asset('storage/' . $post->image) }}" style="margin:0 auto;" class="img-fluid" alt="">
                 </div>
                 @endif
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="post">Image:</label>
                     <input type="file" 
                            name="image" 
                            class="form-control @error('image') is-invalid @enderror">
+                </div>
+                @error('image')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror --}}
+                <label for="post">Image</label>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                    </div>
+                    <div class="custom-file">
+                      <input type="file" name="image" class="custom-file-input @error('image') is-invalid @enderror" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                      <label class="custom-file-label" for="inputGroupFile01">Choose image</label>
+                    </div>
                 </div>
                 @error('image')
                     <div class="alert alert-danger">{{ $message }}</div>
