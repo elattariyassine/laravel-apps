@@ -52,17 +52,16 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                <a id="navbarDropdown" style="padding: 0" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <img style="border-radius:50%;width: 30px;" 
+                                         src="{{ Auth::user()->hasPicture() ? asset('storage/'.Auth::user()->getPicture()) : Auth::user()->getGravatar()}}" alt=""> <span class="caret"></span>
                                 </a>
-
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
@@ -83,6 +82,9 @@
                             <a href="{{ route('users.index') }}">Users</a>
                         </li>
                         @endif
+                        <li class="list-group-item">
+                            <a href="{{ route('users.edit', Auth::user()->id) }}">Profile</a>
+                        </li>
                         <li class="list-group-item">
                             <a href="{{ route('posts.index') }}">Posts</a>
                         </li>

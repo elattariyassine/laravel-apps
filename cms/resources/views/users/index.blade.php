@@ -1,11 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="clearfix">
-        <a href="{{ route('users.create') }}" 
-       class="btn btn-success float-right" 
-       style="margin-bottom: 10px;">Add User</a>
-    </div>
     @if (session()->has('success'))
         <div class="alert alert-success">
             {{ session()->get('success') }}
@@ -29,7 +24,7 @@
                     <tr>
                         <th style="vertical-align: middle;" scope="row">{{ $loop->index + 1 }}</th>
                         <td>
-                            <img src="{{ $user->getGravatar() }}" style="border-radius: 50%" width="60px" height="60px">
+                            <img src="{{ $user->hasPicture() ? asset('storage/'.$user->getPicture()) : $user->getGravatar()}}" style="border-radius: 50%" width="60px" height="60px">
                         </td>
                         <td style="vertical-align: middle;">{{$user->name}}</td>
                         <td style="vertical-align: middle;">

@@ -45,4 +45,22 @@ class User extends Authenticatable
         $hash = md5(strtolower(trim($this->attributes['email'])));
         return "http://gravatar.com/avatar/$hash";
     }
+
+    public function profile(){
+        return $this->hasOne(Profile::class);
+    }
+
+    public function getPicture()
+    {
+        return $this->profile->picture;
+    }
+
+    public function hasPicture()
+    {
+        if (preg_match('/profilesPicture/', $this->profile->picture, $match)) {
+            return true;   
+        }else{
+            return false;
+        }
+    }
 }
