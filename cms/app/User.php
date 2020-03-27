@@ -36,4 +36,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function isAdmin(){
+        return $this->role === 'admin';
+    }
+
+    public function getGravatar(){
+        $hash = md5(strtolower(trim($this->attributes['email'])));
+        return "http://gravatar.com/avatar/$hash";
+    }
 }

@@ -27,3 +27,9 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('/posts', 'PostsController');
     Route::resource('/tags', 'TagsController');
 });
+
+Route::middleware(['auth', 'admin'])->group(function(){
+    Route::get('/users', 'UsersController@index')->name('users.index');
+    Route::get('/users/{user}/make-admin', 'UsersController@makeAdmin')->name('users.make-admin');
+    Route::get('/users/create', 'UsersController@create')->name('users.create');
+});
