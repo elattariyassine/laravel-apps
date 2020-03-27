@@ -29,11 +29,11 @@
                     @forelse ($tags as $tag)
                     <tr>
                         <th scope="row">{{ $loop->index + 1 }}</th>
-                        <td>{{$tag->name}}</td>
+                        <td>{{$tag->name}} <span class="badge badge-primary">{{ $tag->posts->count() }}</span></td>
                         <td>
                             <a href="{{ route('tags.edit', ['tag' => $tag->id]) }}" 
                                class="btn btn-primary">Edit</a>
-                            <form method="post" style="display: inline;" action="{{ route('categories.destroy', ['category' => $tag->id]) }}">
+                            <form method="post" style="display: inline;" action="{{ route('tags.destroy', ['tag' => $tag->id]) }}">
                                 @csrf
                                 @method('delete')
                                 <button type="submit" class="btn btn-danger">Delete</button>

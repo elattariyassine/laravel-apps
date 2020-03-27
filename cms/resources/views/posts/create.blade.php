@@ -2,6 +2,7 @@
 
 @section('stylesheet')
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.1/trix.css">
+<link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
 @endsection
 
 @section('content')
@@ -74,7 +75,24 @@
                 </div>
                 @error('cat')
                     <div class="alert alert-danger">{{ $message }}</div>
-                @enderror                
+                @enderror
+                @if (!$tags->count() <= 0)
+                <div class="form-group">
+                    <label for="selectTag">Select a tag</label>
+                    <select class="form-control tags @error('cat') is-invalid @enderror" id="selectTag" name="tags[]" multiple>
+                        {{-- <option disabled selected>Choose a category</option> --}}
+                        @foreach ($tags as $tag)
+                        <option value="{{ $tag->id }}"
+                            @if (isset($post))
+                                @if ($post->hasTag($tag->id))
+                                    selected
+                                @endif 
+                            @endif   
+                        >{{ $tag->name }}</option>
+                        @endforeach
+                    </select>
+                </div>  
+                @endif               
                 <div class="form-group">
                  <button type="submit" class="btn btn-success">{{ isset($post) ? 'Update' : 'Add'}}</button>
                 </div>
@@ -85,4 +103,10 @@
 
 @section('script')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.1/trix.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.tags').select2();
+        });
+    </script>
 @endsection
