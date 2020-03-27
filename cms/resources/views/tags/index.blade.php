@@ -17,6 +17,7 @@
     <div class="card card-default">
         <div class="card-header">All tags</div>
         <div class="card-body" style="text-align: center;padding:0;">
+            @if ($tags->count() != 0)
             <table class="table table-striped">
                 <thead>
                   <tr>
@@ -45,6 +46,10 @@
                     @endforelse
                 </tbody>
               </table>
+            @else
+                <h1>No tags yet.</h1>
+            @endif
+            
         </div>
     </div>
 @endsection
