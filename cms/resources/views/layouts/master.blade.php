@@ -26,7 +26,29 @@
     
 	@include('layouts.partials.navbar')
     <!-- END nav -->
-    
+    <div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
+            <div class="col-md-12 ftco-animate">
+                <h2 class="subheading">Hello! Welcome to</h2>
+                <h1 class="mb-4 mb-md-0">Readit blog</h1>
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="text">
+                            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+                            <div class="mouse">
+                                <a href="#" class="mouse-icon">
+                                    <div class="mouse-wheel"><span class="ion-ios-arrow-round-down"></span></div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
     @yield('content')
 
 
@@ -47,28 +69,21 @@
           <div class="col-md">
              <div class="ftco-footer-widget mb-4">
               <h2 class="ftco-heading-2">latest News</h2>
+              @forelse ($lastTwoPosts as $ThePost)
               <div class="block-21 mb-4 d-flex">
-	              <a class="img mr-4 rounded" style="background-image: url(images/image_1.jpg);"></a>
-	              <div class="text">
-	                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
-	                <div class="meta">
-	                  <div><a href="#"></span> Oct. 16, 2019</a></div>
-	                  <div><a href="#"></span> Admin</a></div>
-	                  <div><a href="#"></span> 19</a></div>
-	                </div>
-	              </div>
-	            </div>
-	            <div class="block-21 mb-4 d-flex">
-	              <a class="img mr-4 rounded" style="background-image: url(images/image_2.jpg);"></a>
-	              <div class="text">
-	                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
-	                <div class="meta">
-	                  <div><a href="#"></span> Oct. 16, 2019</a></div>
-	                  <div><a href="#"></span> Admin</a></div>
-	                  <div><a href="#"></span> 19</a></div>
-	                </div>
-	              </div>
-	            </div>
+                <a class="img mr-4 rounded" style="background-image: url({{ asset('storage/' . $ThePost->image) }});"></a>
+                <div class="text">
+                  <h3 class="heading"><a href="{{ route('posts.show', $ThePost->id) }}">{{$ThePost->title}}</a></h3>
+                  <div class="meta">
+                    <div><a></span>{{$ThePost->created_at->diffForHumans()}}</a></div>
+                    <div><a></span>Author</a></div>
+                    <div><a></span>{{ $ThePost->user->name }}</a></div>
+                  </div>
+                </div>
+              </div>
+              @empty
+                <h3>NO posts yet</h3>
+              @endforelse
             </div>
           </div>
           <div class="col-md">
@@ -94,15 +109,7 @@
 	            </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12 text-center">
-
-            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-          </div>
-        </div>
+        </div>  
       </div>
     </footer>
     

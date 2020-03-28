@@ -13,7 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', 'WelcomeController@index')->name('welcome');
+Route::get('/articles', 'WelcomeController@articles')->name('articles');
 
 Auth::routes();
 
