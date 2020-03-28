@@ -8,6 +8,7 @@ use App\Http\Requests\UpdatePostRequest;
 use App\Post;
 use App\Tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 
@@ -56,6 +57,7 @@ class PostsController extends Controller
             'description' => $request->description,
             'content' => $request->content,
             'category_id' => $request->categoryID,
+            'user_id' => Auth::user()->id,
             'image' => $request->image->store('images', 'public')
         ]);
         if($request->tags){
@@ -73,7 +75,7 @@ class PostsController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view('posts.show')->withPost($post)->withCategories(Category::all());
     }
 
     /**

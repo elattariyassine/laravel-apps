@@ -1,100 +1,76 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.master')
 
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
-
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+@section('content')
+<div class="hero-wrap js-fullheight" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
+        <div class="col-md-12 ftco-animate">
+            <h2 class="subheading">Hello! Welcome to</h2>
+            <h1 class="mb-4 mb-md-0">Readit blog</h1>
+            <div class="row">
+                <div class="col-md-7">
+                    <div class="text">
+                        <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
+                        <div class="mouse">
+                            <a href="#" class="mouse-icon">
+                                <div class="mouse-wheel"><span class="ion-ios-arrow-round-down"></span></div>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </body>
-</html>
+        </div>
+    </div>
+</div>
+
+        <section class="ftco-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        @forelse ($posts as $post)
+                        <div class="case">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-6 col-xl-8 d-flex">
+                                <a href="{{ route('posts.show', $post->id) }}" class="img w-100 mb-3 mb-md-0" style="background-image: url({{ asset('storage/' . $post->image) }});"></a>
+                            </div>
+                            <div class="col-md-6 col-lg-6 col-xl-4 d-flex">
+                                <div class="text w-100 pl-md-3">
+                                    <span class="subheading">{{ $post->category->name }}</span>
+                                    <h2><a href="{{ route('posts.show', $post->id) }}">{{ $post->title }}</a></h2>
+                                    <ul class="media-social list-unstyled">
+                        <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                        <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                        <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                        </ul>
+                                    <div class="meta">
+                                        <p class="mb-0"><a href="#">{{ $post->created_at->diffForHumans() }}</a> | <a href="#">12 min read</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @empty
+                        <h1>No post found</h1>
+                    @endforelse
+                    </div>
+                </div>
+                <div class="row mt-5">
+        <div class="col text-center">
+            <div class="block-27">
+            <ul>
+                <li><a href="#">&lt;</a></li>
+                <li class="active"><span>1</span></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">&gt;</a></li>
+            </ul>
+            </div>
+        </div>
+        </div>
+            </div>
+        </section>
+@endsection
