@@ -20,7 +20,7 @@ class WelcomeController extends Controller
         $lastTwoPosts = Post::orderBy('id', 'desc')->skip(0)->take(2)->get();
         return view('posts.blog', [
             'lastTwoPosts' => $lastTwoPosts,
-            'posts' => Post::take(9)->get()
+            'posts' => Post::paginate(9)
         ]);
     }
 }
