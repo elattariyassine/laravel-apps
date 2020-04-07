@@ -18,9 +18,10 @@
 
     <link rel="stylesheet" href="css/ionicons.min.css">
     
-    <link rel="stylesheet" href="css/flatico    n.css">
+    <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
+    {{-- <link rel="stylesheet" href="{{ mix('/css/app.css') }}"> --}}
   </head>
   <body>
     

@@ -29,7 +29,7 @@
                     <tr>
                         <th style="vertical-align: middle;" scope="row">{{ $loop->index + 1 }}</th>
                         <td>
-                            <img class="img-thumbnail img-fluid" width="100px" height="50px" src="{{ asset('storage/' . $post->image) }}" alt="">
+                            <img class="img-thumbnail img-fluid" width="100px" height="50px" src="{{ $post->getImage() }}" alt="">
                         </td>
                         <td style="vertical-align: middle;">{{$post->title}}</td>
                         <td style="vertical-align: middle;">
@@ -52,6 +52,15 @@
                     @endforeach
                 </tbody>
               </table>
+              <div class="row mt-5">
+                <div class="col text-center">
+                    <div class="block-27">
+                    <ul>
+                         {{ $posts->links() }}
+                    </ul>
+                    </div>
+                </div>
+            </div>
             @else
             <h1 class="text-center">No post yet.</h1>
             @endif

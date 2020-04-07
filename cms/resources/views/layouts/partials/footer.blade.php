@@ -17,7 +17,7 @@
             <h2 class="ftco-heading-2">latest News</h2>
             @forelse ($lastTwoPosts as $ThePost)
             <div class="block-21 mb-4 d-flex">
-              <a class="img mr-4 rounded" style="background-image: url({{ asset('storage/' . $ThePost->image) }});"></a>
+              <a class="img mr-4 rounded" style="background-image: url({{ $ThePost->getImage() }});"></a>
               <div class="text">
                 <h3 class="heading"><a href="{{ route('posts.show', $ThePost->id) }}">{{$ThePost->title}}</a></h3>
                 <div class="meta">

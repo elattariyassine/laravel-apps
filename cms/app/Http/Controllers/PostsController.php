@@ -31,7 +31,7 @@ class PostsController extends Controller
         if (Route::currentRouteName() == 'posts.index') {
             $action = true;
         } 
-        return view('posts.index', ['posts' => Post::all(), 'action' => $action]);
+        return view('posts.index', ['posts' => Post::paginate(5), 'action' => $action]);
     }
 
     /**
