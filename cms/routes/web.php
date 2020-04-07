@@ -25,6 +25,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('/categories', 'CategoriesController');
     Route::resource('/posts', 'PostsController');
     Route::resource('/tags', 'TagsController');
+    Route::get('/dashboard-visitor', 'VisitorDashboardController@edit')->name('visitor.dashboard.edit');
+    Route::put('/dashboard-visitor', 'VisitorDashboardController@update')->name('visitor.dashboard');
 });
 
 Route::middleware(['auth', 'admin'])->group(function(){

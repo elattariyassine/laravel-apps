@@ -86,6 +86,9 @@
                             <a href="{{ route('users.edit', Auth::user()->id) }}">Profile</a>
                         </li>
                         <li class="list-group-item">
+                            <a href="{{ route('visitor.dashboard.edit') }}">Customize dashboard</a>
+                        </li>
+                        <li class="list-group-item">
                             <a href="{{ route('posts.index') }}">Posts</a>
                         </li>
                         <li class="list-group-item">
