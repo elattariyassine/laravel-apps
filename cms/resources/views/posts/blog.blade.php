@@ -7,20 +7,20 @@
             @forelse ($posts as $post)
             <div class="col-md-4 d-flex ftco-animate">
                 <div class="blog-entry justify-content-end">
-                    <a href="blog-single.html" class="block-20" style="background-image: url('{{ asset('storage/' . $post->image) }}');">
+                    <a href="{{ route('posts.show', $post->id) }}" class="block-20" style="background-image: url('{{ $post->getImage() }}');">
                     </a>
                     <div class="text p-4 float-right d-block">
                         <div class="topper d-flex align-items-center">
                             <div class="one py-2 pl-3 pr-1 align-self-stretch">
-                                <span class="day">18</span>
+                                <span class="day">{{ $post->created_at->isoFormat('D') }}</span>
                             </div>
                             <div class="two pl-0 pr-3 py-2 align-self-stretch">
-                                <span class="yr">2019</span>
-                                <span class="mos">October</span>
+                                <span class="yr">{{ $post->created_at->isoFormat('YYYY') }}</span>
+                                <span class="mos">{{ $post->created_at->isoFormat('MMMM') }}</span>
                             </div>
                         </div>
-                        <h3 class="heading mb-3"><a href="{{ route('posts.show', $post->id) }}">All you want to know about industrial laws</a></h3>
-                        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                        <h3 class="heading mb-3"><a href="{{ route('posts.show', $post->id) }}">{{ $post->title }}</a></h3>
+                        <p>{{ $post->description }}</p>
                         <p><a href="{{ route('posts.show', $post->id) }}" class="btn-custom"><span class="ion-ios-arrow-round-forward mr-3"></span>Read more</a></p>
                     </div>
                 </div>

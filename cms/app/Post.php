@@ -27,4 +27,12 @@ class Post extends Model
     {
         return $this->belongsTo(user::class);
     }
+    public function getImage(){
+        if (substr($this->image, 0, 7) == 'images/'){
+            return 'storage/' . $this->image;
+        }
+        else {
+            return $this->image . "?random=" . rand();
+        }
+    }
 }
