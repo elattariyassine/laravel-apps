@@ -5,4 +5,17 @@
 
 .navbar-brand {
     font-family: 'Oleo Script', cursive;
+    font-size: 22px;
+    padding: 0;
+}
+
+.profile-image {
+    height: 150px;
+    width: 150px;
+    margin-left: 105px;
+}
+
+.container {
+    margin-left: 160px !important;
+    margin-right: 160px !important;
 }
