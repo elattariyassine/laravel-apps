@@ -7,32 +7,35 @@
             <img src="{{ asset('images/erwinSmith.jpg') }}" alt="" class="rounded-circle profile-image">
         </div>
         <div class="col-9" style="margin-top:10px;padding-left: 87px;">
-            <div><h2>Erwin Smith</h2></div>
+            <div class="d-flex justify-content-between align-items-baseline">
+                <h2>{{ $user->username }}</h2>
+                <a href="#">Add new Post</a>
+            </div>
             <div style="display: flex">
                 <div class=""><strong>100</strong> posts</div>
                 <div style="padding-left:50px;"><strong>100</strong> followers</div>
                 <div style="padding-left:50px;"><strong>100</strong> following</div>
             </div>
             <div class="site" style="margin-top: 34px;">
-                <strong>attackonhumans.com</strong>
+                <strong>{{ $user->profile->title }}</strong>
             </div>
             <div style="padding-right:160px;">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem enim ratione consectetur quam eveniet labore, nobis voluptate exercitationem commodi accusamus veritatis quibusdam aut porro. Saepe voluptas earum a expedita accusamus.
+                {{ $user->profile->description }}
             </div>
             <div>
-                <a href="">www.attackonhumans.com</a>
+                <a href="">{{ $user->profile->url }}</a>
             </div>
         </div>
     </div>
     <div class="row pt-4">
         <div class="col-4">
-            <img src="{{ asset('images/post.png') }}" style="max-width: 293px">
+            <img src="{{ asset('images/post.png') }}" class="w-100">
         </div>
         <div class="col-4">
-            <img src="{{ asset('images/post.png') }}" style="max-width: 293px">
+            <img src="{{ asset('images/post.png') }}" class="w-100">
         </div>
         <div class="col-4">
-            <img src="{{ asset('images/post.png') }}" style="max-width: 293px">
+            <img src="{{ asset('images/post.png') }}" class="w-100">
         </div>
     </div>
 </div>
