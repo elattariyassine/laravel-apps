@@ -9,10 +9,10 @@
         <div class="col-9" style="margin-top:10px;padding-left: 87px;">
             <div class="d-flex justify-content-between align-items-baseline">
                 <h2>{{ $user->username }}</h2>
-                <a href="#">Add new Post</a>
+                <a href="{{ route('posts.create') }}">Add new Post</a>
             </div>
             <div style="display: flex">
-                <div class=""><strong>100</strong> posts</div>
+                <div class=""><strong>{{ $user->posts->count() }}</strong> posts</div>
                 <div style="padding-left:50px;"><strong>100</strong> followers</div>
                 <div style="padding-left:50px;"><strong>100</strong> following</div>
             </div>
@@ -28,15 +28,13 @@
         </div>
     </div>
     <div class="row pt-4">
-        <div class="col-4">
-            <img src="{{ asset('images/post.png') }}" class="w-100">
+        @forelse ($user->posts as $post)
+        <div class="col-4 pb-4">
+            <img src="{{ asset('storage') .'/'. $post->image }}" class="w-100">
         </div>
-        <div class="col-4">
-            <img src="{{ asset('images/post.png') }}" class="w-100">
-        </div>
-        <div class="col-4">
-            <img src="{{ asset('images/post.png') }}" class="w-100">
-        </div>
+        @empty
+            <h1>No post yet.</h1>
+        @endforelse
     </div>
 </div>
 @endsection
