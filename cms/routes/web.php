@@ -17,6 +17,7 @@ Route::get('/', 'WelcomeController@index')->name('welcome');
 Route::get('/articles', 'WelcomeController@articles')->name('articles');
 Route::get('/about', 'WelcomeController@about')->name('about');
 Route::get('/contact', 'WelcomeController@contact')->name('contact');
+Route::get('/posts/{post}', 'PostsController@show')->name('posts.show');
 
 Auth::routes();
 
@@ -25,7 +26,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/trashed-posts', 'PostsController@trashed')->name('trashed.index');
     Route::get('/trashed-posts/{id}', 'PostsController@restore')->name('trashed.restore');
     Route::resource('/categories', 'CategoriesController');
-    Route::resource('/posts', 'PostsController');
+    Route::resource('/posts', 'PostsController')->except(['show']);
     Route::resource('/tags', 'TagsController');
     Route::get('/dashboard-visitor', 'VisitorDashboardController@edit')->name('visitor.dashboard.edit');
     Route::put('/dashboard-visitor', 'VisitorDashboardController@update')->name('visitor.dashboard');

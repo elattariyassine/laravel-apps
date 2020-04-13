@@ -18,10 +18,6 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-
-
-    @yield('stylesheet')
 </head>
 <body>
     <div id="app">
@@ -84,6 +80,9 @@
                             <a href="{{ route('users.index') }}">Users</a>
                         </li>
                         @endif
+                        <li class="list-group-item">
+                            <a href="/dashboard-visitor">Edit Dashboard</a>
+                        </li>
                         <li class="list-group-item">
                             <a href="{{ route('users.edit', Auth::user()->id) }}">Profile</a>
                         </li>

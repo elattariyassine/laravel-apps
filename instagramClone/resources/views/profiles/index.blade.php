@@ -21,8 +21,8 @@
             @endcan
             <div style="display: flex">
                 <div class=""><strong>{{ $user->posts->count() }}</strong> posts</div>
-                <div style="padding-left:50px;"><strong>100</strong> followers</div>
-                <div style="padding-left:50px;"><strong>100</strong> following</div>
+                <div style="padding-left:50px;"><strong>2</strong> followers</div>
+                <div style="padding-left:50px;"><strong>4</strong> following</div>
             </div>
             <div class="site" style="margin-top: 34px;">
                 <strong>{{ $user->profile->title }}</strong>
