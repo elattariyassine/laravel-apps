@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use Illuminate\Http\Request;
+use Intervention\Image\ImageManager as Image;
+
 
 class PostsController extends Controller
 {
@@ -25,5 +28,9 @@ class PostsController extends Controller
         auth()->user()->posts()->create($data);
         
         return redirect('/profile/' . auth()->user()->id);
+    }
+
+    public function show(Post $post){
+        return view('posts.show', ['post' => $post]);
     }
 }

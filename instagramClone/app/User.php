@@ -44,4 +44,13 @@ class User extends Authenticatable
     public function posts(){
         return $this->hasMany(Post::class)->orderBy('created_at', 'desc');
     }
+
+    protected static function boot(){
+        parent::boot();
+        static::created(function ($user){
+            $user->profile()->create([
+                'title' => 'username'
+            ]);
+        });
+    }
 }
