@@ -60,12 +60,12 @@ Traditional app to list a to do list.
 Well you don't need any desc for this. You can follow users and their posts will be in ur news feed anyway i didn't work on theme that much didn't had time i only used bootstrap for basic styling.  
 <center><strong>User profile</strong></center>
 
-![homePage](https://github.com/ELATTARIYassine/laravel-apps/blob/master/images/instagram1.png)
+![homePage](https://github.com/ELATTARIYassine/laravel-apps/blob/master/images/Instagram1.PNG)
 
 <center><strong>Create caption</strong></center>
 
-![homePage](https://github.com/ELATTARIYassine/laravel-apps/blob/master/images/instagram2.png)
+![homePage](https://github.com/ELATTARIYassine/laravel-apps/blob/master/images/Instagram2.PNG)
 
 <center><strong>Edit profile</strong></center>
 
-![homePage](https://github.com/ELATTARIYassine/laravel-apps/blob/master/images/instagram3.png)
+![homePage](https://github.com/ELATTARIYassine/laravel-apps/blob/master/images/Instagram3.PNG)
