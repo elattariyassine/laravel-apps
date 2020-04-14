@@ -6,65 +6,65 @@ In the front-end ofc you can visite posts, by category, articles... i used this 
 <center><strong>Front-end screenshots</strong></center> <br>
 <center><strong>HomePage</strong></center>
 
-![homePage](./images\cmsFront1.png)
+![homePage](https://github.com/ELATTARIYassine/laravel-apps/blob/master/images/cmsFront1.png)
 
 <center><strong>Show post</strong></center>
 
-![homePage](./images\cmsShowPost.png)
+![homePage](https://github.com/ELATTARIYassine/laravel-apps/blob/master/images/cmsShowPost.png)
 
 <center><strong>Articles</strong></center>
 
-![homePage](./images\CmsArticles.png)
+![homePage](https://github.com/ELATTARIYassine/laravel-apps/blob/master/images/CmsArticles.png)
 <center><strong>About</strong></center>
 
-![homePage](./images\cmsAbout.png)
+![homePage](https://github.com/ELATTARIYassine/laravel-apps/blob/master/images/cmsAbout.png)
 
 <center><strong>Back-end screenshots</strong></center> <br>
 
 <center><strong>Post management</strong></center>
 
-![homePage](./images\cmAdminDash3.png)
+![homePage](https://github.com/ELATTARIYassine/laravel-apps/blob/master/images/cmAdminDash3.png)
 
 <center><strong>Visitor home page edit</strong></center>
 
-![homePage](./images\cmAdminDash.png)
+![homePage](https://github.com/ELATTARIYassine/laravel-apps/blob/master/images/cmAdminDash.png)
 
 <center><strong>User profile edit</strong></center>
 
-![homePage](./images\cmAdminDash.2png.png)
+![homePage](https://github.com/ELATTARIYassine/laravel-apps/blob/master/images/cmAdminDash.2png.png)
 
 <center><strong>Admin manage users</strong></center>
 
-![homePage](./images\cmAdminDash1.png)
+![homePage](https://github.com/ELATTARIYassine/laravel-apps/blob/master/images/cmAdminDash1.png)
 
 ## App 2 : Todo
 Traditional app to list a to do list.  
 <center><strong>Welcome page</strong></center>
 
-![homePage](./images\todo1.png)
+![homePage](https://github.com/ELATTARIYassine/laravel-apps/blob/master/images/todo1.png)
 
 <center><strong>List todo</strong></center>
 
-![homePage](./images\todo2.png)
+![homePage](https://github.com/ELATTARIYassine/laravel-apps/blob/master/images/todo2.png)
 
 <center><strong>Create todo</strong></center>
 
-![homePage](./images\todo3.png)
+![homePage](https://github.com/ELATTARIYassine/laravel-apps/blob/master/images/todo3.png)
 <center><strong>Edit todo</strong></center>
 
-![homePage](./images\todo4.png)
+![homePage](https://github.com/ELATTARIYassine/laravel-apps/blob/master/images/todo4.png)
 
 
 ## App 3 : Instagram clone
 Well you don't need any desc for this. You can follow users and their posts will be in ur news feed anyway i didn't work on theme that much didn't had time i only used bootstrap for basic styling.  
 <center><strong>User profile</strong></center>
 
-![homePage](./images\instagram1.png)
+![homePage](https://github.com/ELATTARIYassine/laravel-apps/blob/master/images/instagram1.png)
 
 <center><strong>Create caption</strong></center>
 
-![homePage](./images\instagram2.png)
+![homePage](https://github.com/ELATTARIYassine/laravel-apps/blob/master/images/instagram2.png)
 
 <center><strong>Edit profile</strong></center>
 
-![homePage](./images\instagram3.png)
+![homePage](https://github.com/ELATTARIYassine/laravel-apps/blob/master/images/instagram3.png)
